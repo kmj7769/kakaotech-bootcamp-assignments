@@ -11,6 +11,12 @@ public class CanBeHitEntity extends Entity {
         this.defensivePower = defensivePower;
     }
 
+    public CanBeHitEntity(int id, int healthPoint, int defensivePower) {
+        super(id);
+        this.healthPoint = healthPoint;
+        this.defensivePower = defensivePower;
+    }
+
     public int getHealthPoint() {
         return healthPoint;
     }

@@ -10,6 +10,10 @@ public class Entity {
         this.name = name;
     }
 
+    public Entity(int id) {
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

@@ -17,6 +17,16 @@ public class CanHitEntity extends CanBeHitEntity {
         this.attackSpeed = attackSpeed;
     }
 
+    public CanHitEntity(int id,
+                        int healthPoint,
+                        int defensivePower,
+                        int strength,
+                        int attackSpeed) {
+        super(id, healthPoint, defensivePower);
+        this.strength = strength;
+        this.attackSpeed = attackSpeed;
+    }
+
     public int getStrength() {
         return strength;
     }
