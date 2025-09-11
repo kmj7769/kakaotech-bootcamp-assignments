@@ -1,5 +1,7 @@
 package assignment1.entity;
 
+import assignment1.item.Item;
+
 public class ChampionEntity extends CanHitEntity {
 
     private int gold;
