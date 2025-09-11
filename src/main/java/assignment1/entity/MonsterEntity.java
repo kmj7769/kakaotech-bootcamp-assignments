@@ -1,6 +1,6 @@
 package assignment1.entity;
 
-public class MonsterEntity extends CanHitEntity implements Runnable {
+public class MonsterEntity extends CanHitEntity {
 
     protected int value;
 
@@ -12,9 +12,4 @@ public class MonsterEntity extends CanHitEntity implements Runnable {
     public int getValue() {
         return value;
     }
-
-    @Override
-    public void run() {}
-
-    protected void attack() {}
 }

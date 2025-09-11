@@ -1,6 +1,6 @@
 package assignment1.entity;
 
-public class CanHitEntity extends CanBeHitEntity {
+public class CanHitEntity extends CanBeHitEntity implements Runnable {
 
     protected int strength;
     protected int attackSpeed;
@@ -29,4 +29,9 @@ public class CanHitEntity extends CanBeHitEntity {
     public void setOpponent(Entity opponent) {
         this.opponent = opponent;
     }
+
+    @Override
+    public void run() {}
+
+    protected void attack() {}
 }
