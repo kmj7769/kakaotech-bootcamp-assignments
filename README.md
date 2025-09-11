@@ -4,8 +4,6 @@ kakaotech-bootcamp-assignments
 ## 이슈 정의
 ```
 이슈 제목: [Assignment {#}] {Task}
-# Assignment {#}
-- {구현하고자 하는 프로그램, 코드 내용에 대한 설명}
 ## 요구 사항
 - {요구 사항 1}
 - {요구 사항 2}
