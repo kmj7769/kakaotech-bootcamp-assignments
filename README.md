@@ -3,7 +3,7 @@ kakaotech-bootcamp-assignments
 
 ## 이슈 정의
 ```
-이슈 제목: [Assignment {#}] {Task}
+이슈 제목: [Assignment{#}] {Task(간단하게 영어로)}
 ## 요구 사항
 - {요구 사항 1}
 - {요구 사항 2}
