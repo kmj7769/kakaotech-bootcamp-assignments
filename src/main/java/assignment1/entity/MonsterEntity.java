@@ -10,11 +10,6 @@ public class MonsterEntity extends CanHitEntity {
         this.value = value;
     }
 
-    public MonsterEntity(int id, int healthPoint, int defensivePower, int strength, int attackSpeed, int value) {
-        super(id, healthPoint, defensivePower, strength, attackSpeed);
-        this.value = value;
-    }
-
     public int getValue() {
         return value;
     }
