@@ -5,6 +5,7 @@ public class CanHitEntity extends CanBeHitEntity {
     protected int strength;
     protected int attackSpeed;
     protected final Object Lock = new Object();
+    protected Entity opponent;
 
     public CanHitEntity(int id,
                         String name,
@@ -23,5 +24,9 @@ public class CanHitEntity extends CanBeHitEntity {
 
     public int getAttackSpeed() {
         return attackSpeed;
+    }
+
+    public void setOpponent(Entity opponent) {
+        this.opponent = opponent;
     }
 }

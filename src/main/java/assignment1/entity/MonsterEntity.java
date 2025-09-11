@@ -1,9 +1,8 @@
 package assignment1.entity;
 
-public class MonsterEntity extends CanHitEntity {
+public class MonsterEntity extends CanHitEntity implements Runnable {
 
     protected int value;
-    protected Entity opponent;
 
     public MonsterEntity(int id, String name, int healthPoint, int defensivePower, int strength, int attackSpeed, int value) {
         super(id, name, healthPoint, defensivePower, strength, attackSpeed);
@@ -14,10 +13,7 @@ public class MonsterEntity extends CanHitEntity {
         return value;
     }
 
-    public void setOpponent(Entity opponent) {
-        this.opponent = opponent;
-    }
-
+    @Override
     public void run() {}
 
     protected void attack() {}
