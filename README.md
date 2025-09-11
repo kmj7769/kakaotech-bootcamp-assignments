@@ -15,10 +15,10 @@ kakaotech-bootcamp-assignments
 이후 Project에서 status 지정
 
 ## 브랜치 정의
-과제 시작 시 assignment{#} 브랜치 생성
-이슈 생성 후 브랜치 분기
-브랜치 명: assignment{#}/{이슈번호}-{task 내용을 한 단어로}
-assignment{#} 브랜치에 병합
+- 과제 시작 시 assignment{#} 브랜치 생성
+- 이슈 생성 후 브랜치 분기
+- 브랜치 명: assignment{#}/{이슈번호}-{task 내용을 한 단어로}
+- assignment{#} 브랜치에 병합
 
 ## 커밋 정의
 명확하게 설명
