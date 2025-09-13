@@ -34,7 +34,21 @@ public class CanHitEntity extends CanBeHitEntity implements Runnable {
     }
 
     @Override
-    public void run() {}
+    public void run() {
+        while (this.isAlive() && opponent.isAlive()) {
+            attack();
+            try {
+                Thread.sleep(this.getAttackSpeed());
+            }
+            catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
 
-    protected void attack() {}
+    protected void attack() {
+        if (opponent.isAlive()) {
+            opponent.decreaseHealthPoint(strength);
+        }
+    }
 }
