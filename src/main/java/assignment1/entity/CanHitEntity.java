@@ -4,7 +4,7 @@ public class CanHitEntity extends CanBeHitEntity implements Runnable {
 
     protected int strength;
     protected int attackSpeed;
-    protected Entity opponent;
+    protected CanBeHitEntity opponent;
 
     public CanHitEntity(int id,
                         String name,
@@ -18,19 +18,37 @@ public class CanHitEntity extends CanBeHitEntity implements Runnable {
     }
 
     public int getStrength() {
-        return strength;
+        synchronized (lock) {
+            return strength;
+        }
     }
 
     public int getAttackSpeed() {
-        return attackSpeed;
+        synchronized (lock) {
+            return attackSpeed;
+        }
     }
 
-    public void setOpponent(Entity opponent) {
+    public void setOpponent(CanBeHitEntity opponent) {
         this.opponent = opponent;
     }
 
     @Override
-    public void run() {}
+    public void run() {
+        while (this.isAlive() && opponent.isAlive()) {
+            attack();
+            try {
+                Thread.sleep(this.getAttackSpeed());
+            }
+            catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
 
-    protected void attack() {}
+    protected void attack() {
+        if (opponent.isAlive()) {
+            opponent.decreaseHealthPoint(strength);
+        }
+    }
 }
