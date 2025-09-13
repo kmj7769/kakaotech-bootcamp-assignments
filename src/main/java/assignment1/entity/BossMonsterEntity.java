@@ -6,5 +6,13 @@ public class BossMonsterEntity extends MonsterEntity {
         super(id, name, healthPoint, defensivePower, strength, attackSpeed, value);
     }
 
-    public void bossDefeated() {}
+    public void bossDefeated() {
+        System.out.println("Boss " + this.name + " defeated!");
+    }
+
+    @Override
+    public void run() {
+        super.run();
+        bossDefeated();
+    }
 }
