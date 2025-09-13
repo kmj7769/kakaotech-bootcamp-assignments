@@ -9,4 +9,10 @@ public class BossMonsterEntity extends MonsterEntity {
     public void bossDefeated() {
         System.out.println("Boss " + this.name + " defeated!");
     }
+
+    @Override
+    public void run() {
+        super.run();
+        bossDefeated();
+    }
 }
