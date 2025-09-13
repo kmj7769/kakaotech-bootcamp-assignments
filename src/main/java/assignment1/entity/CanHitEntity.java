@@ -4,7 +4,6 @@ public class CanHitEntity extends CanBeHitEntity implements Runnable {
 
     protected int strength;
     protected int attackSpeed;
-    protected final Object Lock = new Object();
     protected Entity opponent;
 
     public CanHitEntity(int id,

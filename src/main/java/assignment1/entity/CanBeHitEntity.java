@@ -4,6 +4,7 @@ public class CanBeHitEntity extends Entity {
 
     protected int healthPoint;
     protected int defensivePower;
+    protected final Object Lock = new Object();
 
     public CanBeHitEntity(int id, String name, int healthPoint, int defensivePower) {
         super(id, name);
