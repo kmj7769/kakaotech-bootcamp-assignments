@@ -4,7 +4,7 @@ public class CanHitEntity extends CanBeHitEntity implements Runnable {
 
     protected int strength;
     protected int attackSpeed;
-    protected Entity opponent;
+    protected CanBeHitEntity opponent;
 
     public CanHitEntity(int id,
                         String name,
@@ -29,7 +29,7 @@ public class CanHitEntity extends CanBeHitEntity implements Runnable {
         }
     }
 
-    public void setOpponent(Entity opponent) {
+    public void setOpponent(CanBeHitEntity opponent) {
         this.opponent = opponent;
     }
 
