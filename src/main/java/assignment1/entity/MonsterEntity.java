@@ -12,4 +12,11 @@ public class MonsterEntity extends CanHitEntity {
     public int getValue() {
         return value;
     }
+
+    @Override
+    public void run() {
+        int initHealthPoint = this.getHealthPoint();
+        super.run();
+        healthPoint = initHealthPoint;
+    }
 }
