@@ -4,7 +4,7 @@ public class CanBeHitEntity extends Entity {
 
     protected int healthPoint;
     protected int defensivePower;
-    protected final Object Lock = new Object();
+    protected final Object lock = new Object();
 
     public CanBeHitEntity(int id, String name, int healthPoint, int defensivePower) {
         super(id, name);
@@ -13,16 +13,26 @@ public class CanBeHitEntity extends Entity {
     }
 
     public int getHealthPoint() {
-        return healthPoint;
+        synchronized (lock) {
+            return healthPoint;
+        }
     }
 
     public int getDefensivePower() {
-        return defensivePower;
+        synchronized (lock) {
+            return defensivePower;
+        }
     }
 
     public boolean isAlive() {
-        return true;
+        synchronized (lock) {
+            return healthPoint > 0;
+        }
     }
 
-    public void decreaseHealthPoint() {}
+    public void decreaseHealthPoint(int amount) {
+        synchronized (lock) {
+             healthPoint = Math.max(healthPoint - amount, 0);
+        }
+    }
 }
