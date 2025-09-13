@@ -38,7 +38,7 @@ public class ChampionEntity extends CanHitEntity {
         int initHealthPoint = this.getHealthPoint();
         super.run();
         if (this.isAlive()) {
-            System.out.println(name + " defeat" + opponent.getName() + "!");
+            System.out.println(name + " defeat " + opponent.getName() + "!");
             gold += ((MonsterEntity) opponent).getValue();
             healthPoint = initHealthPoint;
         }
