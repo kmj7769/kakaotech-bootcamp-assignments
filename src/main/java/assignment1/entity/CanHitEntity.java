@@ -18,11 +18,15 @@ public class CanHitEntity extends CanBeHitEntity implements Runnable {
     }
 
     public int getStrength() {
-        return strength;
+        synchronized (lock) {
+            return strength;
+        }
     }
 
     public int getAttackSpeed() {
-        return attackSpeed;
+        synchronized (lock) {
+            return attackSpeed;
+        }
     }
 
     public void setOpponent(Entity opponent) {
