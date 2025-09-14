@@ -18,7 +18,7 @@ public class BossMonsterEntity extends MonsterEntity {
     // 기존 전투 수행 후 보스 처치 메시지 출력
     @Override
     public void run() {
-        super.run();      // 부모 클래스의 run() 호출해 전투 진행
-        bossDefeated();   // 전투 종료 후 보스 처치 알림
+        super.run(); // 부모 클래스의 run() 호출해 전투 진행
+        if (!this.isAlive()) bossDefeated(); // 전투 승리 후 보스 처치 알림
     }
 }

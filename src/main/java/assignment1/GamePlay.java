@@ -2,6 +2,7 @@ package assignment1;
 
 import assignment1.entity.*;
 import assignment1.item.AttackItem;
+import assignment1.item.BackGroundMusicPlay;
 import assignment1.item.DefensiveItem;
 import assignment1.item.Item;
 
@@ -21,6 +22,16 @@ public class GamePlay {
     // 아이템 구매 메뉴 선택지 배열
     private final static String[] itemChoices = {"1. Armor", "2. Sword", "3. Axe", "4. Back to Menu"};
 
+    // BGM 목록 배열
+    private final static String[] bgmChoices = {
+            "Peaceful Theme: Game Menu BGM",
+            "Majestic Theme: Battle BGM",
+            "Dark and Heavy Theme: Boss Room BGM",
+            "Bright and Powerful Theme: Monster Defeated BGM",
+            "Bright and Holy Theme: Boss Defeated BGM",
+            "Calm Theme: Shop BGM"
+    };
+
     public static void main(String[] args) throws InterruptedException, IOException {
         int cnt = 1;
         // 몬스터, 보스 몬스터 생성 및 배열에 저장
@@ -35,6 +46,10 @@ public class GamePlay {
         AttackItem atkItem2 = new AttackItem(800, 12, 1000);
         Item[] itemArray = {defItem, atkItem1, atkItem2};
 
+        BackGroundMusicPlay backGroundMusicPlay = new BackGroundMusicPlay();
+        Thread backGroundMusicThread = new Thread(backGroundMusicPlay);
+        backGroundMusicThread.start();
+
         // 사용자 입력을 위한 BufferedReader
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.print("Please enter your champion name: ");
@@ -44,13 +59,17 @@ public class GamePlay {
         ChampionEntity champion = new ChampionEntity(1, championName, 300, 5, 15, 1000, 0);
 
         System.out.println("Welcome to Console Battle World!");
+
         int turn = 1;
 
         // 챔피언이 살아있는 동안 게임 진행 반복
         while (champion.isAlive()) {
+
+            backGroundMusicPlay.setMusic(bgmChoices[0]);
+
             printChoices(choices, turn);  // 메인 메뉴 출력
 
-            System.out.print("Please enter your choice: ");
+            System.out.println("Please enter your choice: ");
             int choice = readInt(br);     // 사용자 선택 입력
             if (choice == -1) {
                 System.out.println("Invalid input. Please enter a number.");
@@ -60,7 +79,7 @@ public class GamePlay {
             if (choice == 1) {  // 전투 선택
                 printChoices(battleChoices, turn);  // 전투 메뉴 출력
 
-                System.out.print("Please select your opponent: ");
+                System.out.println("Please select your opponent: ");
                 int battleChoice = readInt(br);    // 상대 몬스터 선택
                 if (battleChoice == -1) {
                     System.out.println("Invalid input. Please enter a number.");
@@ -84,6 +103,9 @@ public class GamePlay {
                 championThread.start();
                 opponentThread.start();
 
+                if (battleChoice == 3) backGroundMusicPlay.setMusic(bgmChoices[2]);
+                else backGroundMusicPlay.setMusic(bgmChoices[1]);
+
                 // 두 스레드가 종료될 때까지 대기
                 championThread.join();
                 opponentThread.join();
@@ -96,8 +118,11 @@ public class GamePlay {
                     break;
                 }
 
+                backGroundMusicPlay.setMusic(bgmChoices[3]);
+
                 // 보스 몬스터 처치 시 게임 클리어 메시지 및 종료
                 if (battleChoice == 3) {
+                    backGroundMusicPlay.setMusic(bgmChoices[4]);
                     System.out.println("Game Clear!");
                     break;
                 }
@@ -105,12 +130,14 @@ public class GamePlay {
                 turn++;
             }
             else if (choice == 2) {  // 아이템 구매 메뉴
+                backGroundMusicPlay.setMusic(bgmChoices[5]);
+
                 while (true) {
                     printItemChoices(itemArray);   // 아이템 목록 출력
 
                     System.out.println("You have " + champion.getGold() + " gold!");
 
-                    System.out.print("Please select an item you want to buy: ");
+                    System.out.println("Please select an item you want to buy: ");
                     int itemChoice = readInt(br);
                     if (itemChoice == -1) {
                         System.out.println("Invalid input. Please enter a number.");
@@ -140,6 +167,9 @@ public class GamePlay {
                 System.out.println("Invalid choice. Please select 1, 2, or 3.");
             }
         }
+
+        backGroundMusicPlay.stopMusic();
+        backGroundMusicThread.join();
     }
 
     // 메뉴 선택지 출력 (초기 턴엔 첫 선택지만, 이후엔 모두 출력)
